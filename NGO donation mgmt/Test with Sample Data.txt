@@ -1,0 +1,9 @@
+Test with Sample Data
+
+INSERT INTO Donor VALUES (1,'Alice','Wong','alice@donors.org');
+
+INSERT INTO Campaign VALUES
+(101,'Clean Water Drive','2024-01-01','2024-03-31');
+
+INSERT INTO Donation VALUES
+(1,1,101,500.00,'2024-01-15');
