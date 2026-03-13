@@ -1,0 +1,38 @@
+
+PHYSICAL MODEL (SQL)
+
+CREATE TABLE Donor (
+    donor_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    email VARCHAR(100) UNIQUE,
+    registration_date DATE
+);
+
+CREATE TABLE NGO (
+    ngo_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    department VARCHAR(50)
+);
+
+CREATE TABLE Cause (
+    cause_id INT PRIMARY KEY,
+    cause_name VARCHAR(100),
+    target_amount INT,
+    ngo_id INT,
+    FOREIGN KEY (ngo_id) REFERENCES NGO(ngo_id)
+);
+
+CREATE TABLE Donation (
+    donation_id INT PRIMARY KEY,
+    donor_id INT,
+    cause_id INT,
+    donation_date DATE,
+    amount INT,
+    FOREIGN KEY (donor_id) REFERENCES Donor(donor_id),
+    FOREIGN KEY (cause_id) REFERENCES Cause(cause_id),
+    UNIQUE (donor_id, cause_id)
+);
+
+CREATE INDEX idx_donation_donor ON Donation(donor_id);
+CREATE INDEX idx_donation_cause ON Donation(cause_id);
