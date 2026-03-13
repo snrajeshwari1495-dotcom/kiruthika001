@@ -1,0 +1,25 @@
+
+Create a view to expose data to user
+
+BUSINESS QUERY 1: TOP 3 MOST ACTIVE CAMPAIGNS
+
+SELECT
+    campaign_id,
+    campaign_name,
+    COUNT(donationid) AS totaldonations
+FROM vdonationanalytics
+GROUP BY campaignid, campaignname
+ORDER BY total_donations DESC
+LIMIT 3;
+
+
+
+BUSINESS QUERY 2: AVERAGE DONATION PER CAMPAIGN
+
+SELECT
+    campaign_id,
+    campaign_name,
+    ROUND(AVG(donationamount), 2) AS avgdonation
+FROM vdonationanalytics
+GROUP BY campaignid, campaignname
+ORDER BY avg_donation DESC;
