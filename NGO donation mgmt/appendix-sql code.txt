@@ -1,0 +1,30 @@
+Table Donor {
+  donor_id int [pk]
+  first_name varchar(50) [not null]
+  last_name varchar(50) [not null]
+  email varchar(100) [not null, unique]
+  registration_date date [not null]
+}
+
+Table NGO {
+  ngo_id int [pk]
+  name varchar(100) [not null]
+  department varchar(50) [not null]
+}
+
+Table Cause {
+  cause_id int [pk]
+  cause_name varchar(100) [not null]
+  description varchar(255)
+  target_amount decimal [not null]
+  ngo_id int [not null]
+}
+
+Table Donation {
+  donation_id int [pk]
+  donor_id int [not null]
+  cause_id int [not null]
+  donation_date date [not null]
+  amount decimal [not null]
+}
+
