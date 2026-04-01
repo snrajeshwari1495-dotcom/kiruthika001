@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Choose Game</title>
+
+<style>
+
+body{
+font-family: Arial;
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#e4ff4e,#6f6cff,#00c9ff);
+color:white;
+}
+
+.menu-box{
+background:rgba(0,0,0,0.6);
+padding:40px;
+border-radius:15px;
+text-align:center;
+width:350px;
+}
+
+h1{
+margin-bottom:30px;
+}
+
+button{
+width:200px;
+padding:12px;
+margin:10px;
+font-size:18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+button:hover{
+background:#ddd;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="menu-box">
+
+<h1>Choose a Game</h1>
+
+<button onclick="window.location.href='rps.html'">
+🎮 Rock Paper Scissors
+</button>
+
+<br>
+
+<button onclick="window.location.href='guess.html'">
+🎯 Number Guessing Game
+</button>
+
+<br>
+
+<button onclick="window.location.href='memory.html'">
+🧠 Memory Card Game
+</button>
+
+<br><br>
+
+<button onclick="goBack()">
+⬅ Back to Home
+</button>
+
+</div>
+
+<script>
+
+function goBack(){
+window.location.href="index.html";
+}
+
+</script>
+
+</body>
+</html>
