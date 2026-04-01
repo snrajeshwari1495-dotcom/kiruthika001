@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Number Guessing Game</title>
+
+<style>
+
+body{
+font-family: Arial;
+text-align: center;
+color: white;
+margin:0;
+height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:linear-gradient(135deg,#fffc4e,#6cff78,#00c9ff);
+}
+
+.game-box{
+background:rgba(0,0,0,0.6);
+padding:40px;
+border-radius:15px;
+width:350px;
+}
+
+input{
+padding:10px;
+font-size:18px;
+width:120px;
+}
+
+button{
+padding:10px 20px;
+font-size:16px;
+margin:5px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+button:hover{
+background:#ddd;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="game-box">
+
+<h1>Number Guessing Game</h1>
+
+<p>Guess a number between 1 and 10</p>
+
+<p>Attempts Left: <span id="attempts">5</span></p>
+
+<input type="number" id="guess">
+
+<br><br>
+
+<button onclick="check()">Guess</button>
+<button onclick="restart()">Restart</button>
+
+<p id="result"></p>
+
+<br>
+
+<button onclick="goBack()">Back</button>
+
+</div>
+
+<script>
+
+let number = Math.floor(Math.random()*10)+1;
+let attempts = 5;
+
+function check(){
+
+let guess = document.getElementById("guess").value;
+
+if(attempts <= 0){
+document.getElementById("result").innerText="Game Over!";
+return;
+}
+
+attempts--;
+
+if(guess == number){
+document.getElementById("result").innerText="🎉 Correct! You won!";
+}
+else if(guess < number){
+document.getElementById("result").innerText="Too Low!";
+}
+else{
+document.getElementById("result").innerText="Too High!";
+}
+
+document.getElementById("attempts").innerText = attempts;
+
+if(attempts == 0 && guess != number){
+document.getElementById("result").innerText =
+"Game Over! The number was " + number;
+}
+
+}
+
+function restart(){
+
+number = Math.floor(Math.random()*10)+1;
+attempts = 5;
+
+document.getElementById("attempts").innerText = attempts;
+document.getElementById("result").innerText = "";
+document.getElementById("guess").value = "";
+
+}
+
+function goBack(){
+window.location.href="choose.html";
+}
+
+</script>
+
+</body>
+</html>
