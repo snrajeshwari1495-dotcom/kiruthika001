@@ -1,0 +1,80 @@
+
+import java.util.*;
+
+public class DataAnalysisAssignment {
+
+    // Function to calculate mean
+    public static double mean(double[] data) {
+        double sum = 0;
+        for (double num : data) {
+            sum += num;
+        }
+        return sum / data.length;
+    }
+
+    // Function to calculate median
+    public static double median(double[] data) {
+        Arrays.sort(data);
+        int n = data.length;
+        if (n % 2 == 0) {
+            return (data[n / 2 - 1] + data[n / 2]) / 2.0;
+        } else {
+            return data[n / 2];
+        }
+    }
+
+    // Function to find max
+    public static double max(double[] data) {
+        double max = data[0];
+        for (double num : data) {
+            if (num > max) {
+                max = num;
+            }
+        }
+        return max;
+    }
+
+    // Function to find min
+    public static double min(double[] data) {
+        double min = data[0];
+        for (double num : data) {
+            if (num < min) {
+                min = num;
+            }
+        }
+        return min;
+    }
+
+    // Function to calculate standard deviation
+    public static double stdDev(double[] data) {
+        double mean = mean(data);
+        double sum = 0;
+        for (double num : data) {
+            sum += Math.pow(num - mean, 2);
+        }
+        return Math.sqrt(sum / data.length);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of data points: ");
+        int n = sc.nextInt();
+
+        double[] data = new double[n];
+
+        System.out.println("Enter the data values:");
+        for (int i = 0; i < n; i++) {
+            data[i] = sc.nextDouble();
+        }
+
+        System.out.println("\n--- Data Analysis Results ---");
+        System.out.println("Mean: " + mean(data));
+        System.out.println("Median: " + median(data));
+        System.out.println("Maximum: " + max(data));
+        System.out.println("Minimum: " + min(data));
+        System.out.println("Standard Deviation: " + stdDev(data));
+
+        sc.close();
+    }
+}
